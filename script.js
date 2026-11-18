@@ -18,14 +18,14 @@ const CONFIG = {
       title: "Miss",
       given: "Gift Matthew",
       surname: "Anosike",
-      parents: "Daughter of the late Mr & Mrs Ikegwu A. Matthew"
+      parents: "Daughter of the late Mr & Mrs Ikegwu Matthew"
     },
     groom: {
       hero: "Nnanna",
       title: "Mr",
       given: "Nnanna Tochukwu",
       surname: "Orji",
-      parents: "Son of the late Mr Orji Nnanna & Mrs Comfort Orji"
+      parents: "Son of the late Mr Orji Nnanna"
     }
   },
 
@@ -80,7 +80,7 @@ const CONFIG = {
   },
 
   // Leave names empty ("") to hide the Father of the Day section.
-  fatherOfDay: { label: "Father of the Day", names: "Mrs Felix Ogbonna", role: "" },
+  fatherOfDay: { label: "Father of the Day", names: "Mr Felix Ogbonna", role: "" },
 
   // Empty list [] hides the vendors section. The last row is the website developer credit.
   vendors: [
@@ -134,8 +134,7 @@ const CONFIG = {
 
   faq: {
     dressCode: "Please dress in the colours of the day:",
-    parking: "Please note that there is no parking space at the venue.",
-    accommodation: "Please note that no accommodation is provided."
+    accommodation: "Accommodation will be available."
   },
 
   footer: { thanks: "Thank you for celebrating with us. Your love and presence mean the world to us." },
@@ -364,7 +363,6 @@ const CONFIG = {
     n.appendChild(el("p", "", C.faq.dressCode));
     var ul = el("ul", "faq-sw"); swatchList(ul); n.appendChild(ul);
   });
-  faqAdd("Parking", function (n) { n.appendChild(el("p", "", C.faq.parking)); });
   faqAdd("Accommodation", function (n) { n.appendChild(el("p", "", C.faq.accommodation)); });
   faqAdd("Contact person", function (n) {
     var p = el("p"); p.appendChild(document.createTextNode(C.contact.personName + ": "));

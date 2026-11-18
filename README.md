@@ -32,7 +32,7 @@ These were assumed or left as placeholders. Search for them in `script.js`:
 4. **Bride's title** (`Miss`) was assumed.
 5. **Reception venue**: you wrote "Reception confirm". It currently shows "Ebem Umuye, Ihechiowa, Arochukwu L.G.A, Abia State". Update `venues[1]` once confirmed.
 6. **Google Maps pins**: open each venue in Google Maps, copy the address text exactly as Google shows it into `mapQuery`, or paste the Maps link into `mapsUrl`. Check that the pin lands correctly.
-7. **Father of the Day**: shown as "Mrs Felix Ogbonna" exactly as you wrote it. Check the title and add a role if you like (`fatherOfDay.role`).
+7. **Father of the Day**: shown as "Mr Felix Ogbonna". Add a role if you like (`fatherOfDay.role`).
 8. **Contact person** name for the FAQ is "Our wedding coordinator" (`contact.personName`).
 9. **Calendar length**: assumed 4 hours (`event.durationHours`).
 10. **Colour of "Gold"**: you gave champagne gold `#F7E7CE`. The shiny gold effect is built from it.
