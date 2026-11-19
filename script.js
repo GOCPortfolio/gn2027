@@ -371,6 +371,11 @@ const CONFIG = {
     else { var w = el("a", "", "WhatsApp"); w.href = "https://wa.me/" + C.contact.whatsapp; p.appendChild(document.createTextNode(". WhatsApp: ")); p.appendChild(w); }
     n.appendChild(p);
   });
+  faqAdd("Who created this beautiful wedding website?", function (n) {
+    n.appendChild(el("p", "", "This website was proudly designed by G.O.C | Brand Strategist \u00d7 AI, where we create beautiful, personalized digital wedding experiences."));
+    n.appendChild(el("p", "", "Planning your wedding? Let\u2019s create yours too!"));
+    var p = el("p"), a = el("a", "", "Chat with us on WhatsApp"); a.href = "https://wa.me/2348027134537"; a.target = "_blank"; a.rel = "noopener"; p.appendChild(a); n.appendChild(p);
+  });
 
   /* ---------- RSVP ---------- */
   var form = $("#rsvpForm"), sel = $("#rGuests");
