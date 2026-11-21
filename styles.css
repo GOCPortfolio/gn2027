@@ -118,10 +118,15 @@ button{font:inherit;color:inherit}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;background:var(--emerald-deep);text-align:center}
-.hero-photo{position:relative}
-.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.hero-photo{position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--emerald-deep)}
+.hero-photo img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1);transition:opacity 1.6s cubic-bezier(.4,0,.2,1);will-change:opacity,transform}
+.hero-photo img.is-active{opacity:1;z-index:1}
+.hero-photo img.is-leaving{opacity:0;z-index:0}
+.hero-photo.is-sliding img.is-active,.hero-photo.is-sliding img.is-leaving{animation:heroZoom 8s ease-out forwards}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.07)}}
+.hero-photo::after{z-index:2}
 .hero-photo::after{content:"";position:absolute;left:0;right:0;bottom:0;height:48%;background:linear-gradient(to top,var(--emerald-deep) 8%,rgba(3,54,30,0))}
-.hero-content{position:relative;z-index:1;margin-top:-120px;padding:0 20px 64px}
+.hero-content{position:relative;z-index:3;margin-top:-120px;padding:0 20px 64px}
 .hero .hashtag{font-family:var(--f-head);font-size:1.05rem;letter-spacing:.3em;padding-left:.3em}
 .hashtag{font-family:var(--f-head);letter-spacing:.26em}
 .tagline{font-style:italic;font-size:1.3rem;margin-top:6px;color:var(--champagne)}
@@ -366,6 +371,8 @@ body{background:#E7F0EA}
   .orn,.seal,.scroll-cue span,.check{animation:none}
   .cd-box b.flip{animation:none}
   .faq-a,.faq-q .pm,.toast{transition:none}
+  .hero-photo img{transition:opacity .01s}
+  .hero-photo.is-sliding img.is-active,.hero-photo.is-sliding img.is-leaving{animation:none}
 }
 
 /* ==========================================================
@@ -388,8 +395,8 @@ body{background:#E7F0EA}
   .env-guest{font-size:2.4rem}
 
   .hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;align-items:center}
-  .hero-photo{height:100vh}
-  .hero-photo img{height:100%;width:100%;aspect-ratio:auto}
+  .hero-photo{height:100vh;aspect-ratio:auto}
+  .hero-photo img{height:100%;width:100%}
   .hero-photo::after{left:auto;top:0;width:35%;height:auto;background:linear-gradient(to left,#fff 6%,rgba(255,255,255,0))}
   .hero-content{margin-top:0;padding:40px 48px}
   .hero-names .script{font-size:clamp(5rem,8vw,7.5rem)}

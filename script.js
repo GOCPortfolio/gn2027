@@ -564,3 +564,33 @@ const CONFIG = {
   // Safety: Esc also skips while the intro is up
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !introDone && !started && lb.hidden) skipBtn.click(); });
 })();
+
+/* ---------- Hero photo slider (smooth cross-fade, starts once the envelope is open) ---------- */
+(function () {
+  var box = document.querySelector(".hero-photo");
+  if (!box) return;
+  var slides = Array.prototype.slice.call(box.querySelectorAll("img.slide"));
+  if (slides.length < 2) return;
+  var HOLD = 5500, cur = 0, timer = null, reduced = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function show(n) {
+    var prev = slides[cur]; cur = n; var next = slides[cur];
+    next.style.animation = "none"; void next.offsetWidth; next.style.animation = "";
+    prev.classList.remove("is-active"); prev.classList.add("is-leaving");
+    next.classList.remove("is-leaving"); next.classList.add("is-active");
+    setTimeout(function () { if (prev !== slides[cur]) prev.classList.remove("is-leaving"); }, 1800);
+  }
+  function next() { show((cur + 1) % slides.length); }
+  function play() { if (timer || document.hidden) return; box.classList.add("is-sliding"); timer = setInterval(next, HOLD); }
+  function stop() { clearInterval(timer); timer = null; }
+  document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else if (started) play(); });
+  var started = false;
+  function begin() {
+    if (started) return; started = true;
+    slides.forEach(function (im) { im.loading = "eager"; });
+    play();
+  }
+  // wait for the envelope screen to disappear, then start
+  var wait = setInterval(function () {
+    if (!document.getElementById("intro")) { clearInterval(wait); begin(); }
+  }, 300);
+})();
